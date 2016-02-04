@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="cocoapods,pods," />
+  <meta name="keywords" content="cocoapods, pods," />
 
 
 
@@ -57,27 +57,18 @@
 
 
 
-<meta name="description" content="开篇公司项目一直在用CocoaPods管理第三方包，所以就写了个开源图片选择库（仿微信），随带学学CocoaPods私有库的配置以及如何让自己的开源库支持了pod install。
-准备工作github创建私有库 如testSpecs.git
-pod repo add testSpecs https://github.com/qgg/testSpecs.git
-github创建工具库 如QGGIm">
+<meta name="description" content="开篇公司项目一直在用CocoaPods管理第三方包，所以就写了个开源图片选择库（仿微信），随带学学CocoaPods私有库的配置以及如何让自己的开源库支持了pod install。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="让自己的库支持CocoaPods配置">
 <meta property="og:url" content="https://infiniteqin.github.io/2016/02/03/让自己的库支持CocoaPods配置/index.html">
 <meta property="og:site_name" content="QGG的个人博客">
-<meta property="og:description" content="开篇公司项目一直在用CocoaPods管理第三方包，所以就写了个开源图片选择库（仿微信），随带学学CocoaPods私有库的配置以及如何让自己的开源库支持了pod install。
-准备工作github创建私有库 如testSpecs.git
-pod repo add testSpecs https://github.com/qgg/testSpecs.git
-github创建工具库 如QGGIm">
+<meta property="og:description" content="开篇公司项目一直在用CocoaPods管理第三方包，所以就写了个开源图片选择库（仿微信），随带学学CocoaPods私有库的配置以及如何让自己的开源库支持了pod install。">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/233856-b2f0519f1bf92e33.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/233856-03a1c1eba1c07447.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320">
-<meta property="og:updated_time" content="2016-02-04T03:47:48.000Z">
+<meta property="og:updated_time" content="2016-02-04T06:12:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="让自己的库支持CocoaPods配置">
-<meta name="twitter:description" content="开篇公司项目一直在用CocoaPods管理第三方包，所以就写了个开源图片选择库（仿微信），随带学学CocoaPods私有库的配置以及如何让自己的开源库支持了pod install。
-准备工作github创建私有库 如testSpecs.git
-pod repo add testSpecs https://github.com/qgg/testSpecs.git
-github创建工具库 如QGGIm">
+<meta name="twitter:description" content="开篇公司项目一直在用CocoaPods管理第三方包，所以就写了个开源图片选择库（仿微信），随带学学CocoaPods私有库的配置以及如何让自己的开源库支持了pod install。">
 
 
 
@@ -251,13 +242,15 @@ github创建工具库 如QGGIm">
 
       
         <h1 id="u5F00_u7BC7"><a href="#u5F00_u7BC7" class="headerlink" title="开篇"></a>开篇</h1><p>公司项目一直在用CocoaPods管理第三方包，所以就写了个开源图片选择库（仿微信），随带学学CocoaPods私有库的配置以及如何让自己的开源库支持了pod install。</p>
+<a id="more"></a>
 <h1 id="u51C6_u5907_u5DE5_u4F5C"><a href="#u51C6_u5907_u5DE5_u4F5C" class="headerlink" title="准备工作"></a>准备工作</h1><p>github创建私有库 如testSpecs.git</p>
 <p>pod repo add testSpecs <a href="https://github.com/qgg/testSpecs.git" target="_blank" rel="external">https://github.com/qgg/testSpecs.git</a></p>
-<p>github创建工具库 如QGGImagePicker 注意创建的时候勾选开源协议<br>命令行创建模版工程<br>pod lib create QGGImagePicker</p>
+<p>github创建工具库 如QGGImagePicker 注意创建的时候勾选开源协议<br>命令行创建模版工程 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod lib create QGGImagePicker</span><br></pre></td></tr></table></figure>
 <p>根据提示创建完成</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XXXXXX$ pod lib create QGGImagePicker&#10;Cloning `https://github.com/CocoaPods/pod-template.git` into `QGGImagePicker`.&#10;Configuring QGGImagePicker template.&#10;------------------------------&#10;To get you started we need to ask a few questions, this should only take a minute.&#10;If this is your first time we recommend running through with the guide:&#160;&#10;&#160;- http://guides.cocoapods.org/making/using-pod-lib-create.html&#10;&#160;( hold cmd and double click links to open in a browser. )&#10;What language do you want to use?? [ ObjC / Swift ]&#10;&#160;&#62; ObjC&#10;Would you like to include a demo application with your library? [ Yes / No ]&#10;&#160;&#62; Yes&#10;Which testing frameworks will you use? [ Specta / Kiwi / None ]&#10;&#160;&#62; None&#10;Would you like to do view based testing? [ Yes / No ]&#10;&#160;&#62; No&#10;What is your class prefix?&#10;&#160;&#62; QGG</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pod lib create QGGImagePicker&#10;Cloning `https://github.com/CocoaPods/pod-template.git` into `QGGImagePicker`.&#10;Configuring QGGImagePicker template.&#10;------------------------------&#10;To get you started we need to ask a few questions, this should only take a minute.&#10;If this is your first time we recommend running through with the guide:&#160;&#10;&#160;- http://guides.cocoapods.org/making/using-pod-lib-create.html&#10;&#160;( hold cmd and double click links to open in a browser. )&#10;What language do you want to use?? [ ObjC / Swift ]&#10;&#160;&#62; ObjC&#10;Would you like to include a demo application with your library? [ Yes / No ]&#10;&#160;&#62; Yes&#10;Which testing frameworks will you use? [ Specta / Kiwi / None ]&#10;&#160;&#62; None&#10;Would you like to do view based testing? [ Yes / No ]&#10;&#160;&#62; No&#10;What is your class prefix?&#10;&#160;&#62; QGG</span><br></pre></td></tr></table></figure>
 <p>完成后打开工程目录如下:工具库主要在红框内容Classes目录下进行开发<br><img src="http://upload-images.jianshu.io/upload_images/233856-b2f0519f1bf92e33.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt="1.png"><br>修改工程下的.podspec文件，如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;# Be sure to run `pod lib lint QGGImagePicker.podspec&#39; to ensure this is a&#10;# valid spec before submitting.&#10;#&#10;# Any lines starting with a # are optional, but their use is encouraged&#10;# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html&#10;#&#10;&#10;Pod::Spec.new do |s|&#10;&#160; s.name &#160; &#160; &#160; &#160; &#160; &#160; = &#34;QGGImagePicker&#34;&#10;&#160; s.version&#160; &#160; &#160; &#160; &#160; = &#34;0.0.1&#34;&#10;&#160; s.summary&#160; &#160; &#160; &#160; &#160; = &#34;QGGImagePicker.&#34;&#10;&#10;# This description is used to generate tags and improve search results.&#10;# &#160; * Think: What does it do? Why did you write it? What is the focus?&#10;# &#160; * Try to keep it short, snappy and to the point.&#10;# &#160; * Write the description between the DESC delimiters below.&#10;# &#160; * Finally, don&#39;t worry about the indent, CocoaPods strips it! &#160;&#10;&#160; s.description&#160; &#160; &#160; = &#60;&#60;-DESC&#10;&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; A ImagePicker Like WeChat&#39;s ImagePicker&#10;&#160;&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; DESC&#10;&#10;&#160; s.homepage &#160; &#160; &#160; &#160; = &#34;https://github.com/infiniteQin/QGGImagePicker.git&#34;&#10;&#160; # s.screenshots &#160; &#160; = &#34;www.example.com/screenshots_1&#34;, &#34;www.example.com/screenshots_2&#34;&#10;&#160; s.license&#160; &#160; &#160; &#160; &#160; = &#39;MIT&#39;&#10;&#160; s.author &#160; &#160; &#160; &#160; &#160; = &#123; &#34;changqin&#34; =&#62; &#34;changqin@ixiaopu.com&#34; &#125;&#10;&#160; s.source &#160; &#160; &#160; &#160; &#160; = &#123; :git =&#62; &#34;https://github.com/infiniteQin/QGGImagePicker.git&#34;, :tag =&#62; s.version.to_s &#125;&#10;&#160; # s.social_media_url = &#39;https://twitter.com/&#60;TWITTER_USERNAME&#62;&#39;&#10;&#10;&#160; s.platform &#160; &#160; = :ios, &#39;7.0&#39;&#10;&#160; s.requires_arc = true&#10;&#10;&#160; s.source_files = &#39;Pod/Classes/**/*&#39;,&#39;Pod/Classes/**/**/*&#39;&#10;&#160; #s.resource_bundles = &#123;&#10;&#160; #&#160; &#39;QGGImagePicker&#39; =&#62; [&#39;Pod/Assets/*.png&#39;]&#10;&#160; #&#125;&#10;&#160; #s.resources = &#34;Pod/*.xcassets&#34;&#10;&#10;&#160; # s.public_header_files = &#39;Pod/Classes/**/*.h&#39;&#10;&#160; s.frameworks = &#34;UIKit&#34;, &#34;AssetsLibrary&#34;&#10;&#160; s.dependency &#39;Masonry&#39;, &#39;~&#62; 0.6.3&#39;&#10;end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># Be sure to run `pod lib lint QGGImagePicker.podspec&#39; to ensure this is a&#10;# valid spec before submitting.&#10;#&#10;# Any lines starting with a # are optional, but their use is encouraged&#10;# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html&#10;#&#10;&#10;Pod::Spec.new do |s|&#10;&#160; s.name &#160; &#160; &#160; &#160; &#160; &#160; = &#34;QGGImagePicker&#34;&#10;&#160; s.version&#160; &#160; &#160; &#160; &#160; = &#34;0.0.1&#34;&#10;&#160; s.summary&#160; &#160; &#160; &#160; &#160; = &#34;QGGImagePicker.&#34;&#10;&#10;# This description is used to generate tags and improve search results.&#10;# &#160; * Think: What does it do? Why did you write it? What is the focus?&#10;# &#160; * Try to keep it short, snappy and to the point.&#10;# &#160; * Write the description between the DESC delimiters below.&#10;# &#160; * Finally, don&#39;t worry about the indent, CocoaPods strips it! &#160;&#10;&#160; s.description&#160; &#160; &#160; = &#60;&#60;-DESC&#10;&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; A ImagePicker Like WeChat&#39;s ImagePicker&#10;&#160;&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; DESC&#10;&#10;&#160; s.homepage &#160; &#160; &#160; &#160; = &#34;https://github.com/infiniteQin/QGGImagePicker.git&#34;&#10;&#160; # s.screenshots &#160; &#160; = &#34;www.example.com/screenshots_1&#34;, &#34;www.example.com/screenshots_2&#34;&#10;&#160; s.license&#160; &#160; &#160; &#160; &#160; = &#39;MIT&#39;&#10;&#160; s.author &#160; &#160; &#160; &#160; &#160; = &#123; &#34;changqin&#34; =&#62; &#34;changqin@ixiaopu.com&#34; &#125;&#10;&#160; s.source &#160; &#160; &#160; &#160; &#160; = &#123; :git =&#62; &#34;https://github.com/infiniteQin/QGGImagePicker.git&#34;, :tag =&#62; s.version.to_s &#125;&#10;&#160; # s.social_media_url = &#39;https://twitter.com/&#60;TWITTER_USERNAME&#62;&#39;&#10;&#10;&#160; s.platform &#160; &#160; = :ios, &#39;7.0&#39;&#10;&#160; s.requires_arc = true&#10;&#10;&#160; s.source_files = &#39;Pod/Classes/**/*&#39;,&#39;Pod/Classes/**/**/*&#39;&#10;&#160; #s.resource_bundles = &#123;&#10;&#160; #&#160; &#39;QGGImagePicker&#39; =&#62; [&#39;Pod/Assets/*.png&#39;]&#10;&#160; #&#125;&#10;&#160; #s.resources = &#34;Pod/*.xcassets&#34;&#10;&#10;&#160; # s.public_header_files = &#39;Pod/Classes/**/*.h&#39;&#10;&#160; s.frameworks = &#34;UIKit&#34;, &#34;AssetsLibrary&#34;&#10;&#160; s.dependency &#39;Masonry&#39;, &#39;~&#62; 0.6.3&#39;&#10;end</span><br></pre></td></tr></table></figure>
 <h1 id="u672C_u5730_u9A8C_u8BC1"><a href="#u672C_u5730_u9A8C_u8BC1" class="headerlink" title="本地验证"></a>本地验证</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod lib lint</span><br></pre></td></tr></table></figure>
 <p>验证成功后推送工程到github给如QGGImagePicker工具库打tag（和podspec中的版本保持一致）</p>
 <h1 id="u9A8C_u8BC1_u8FDC_u7A0B_u5E93"><a href="#u9A8C_u8BC1_u8FDC_u7A0B_u5E93" class="headerlink" title="验证远程库"></a>验证远程库</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod spec lint</span><br></pre></td></tr></table></figure>
@@ -284,7 +277,7 @@ github创建工具库 如QGGIm">
       
         <div class="post-tags">
           
-            <a href="/tags/cocoapods-pods/" rel="tag">#cocoapods,pods</a>
+            <a href="/tags/cocoapods-pods/" rel="tag">#cocoapods, pods</a>
           
         </div>
       
