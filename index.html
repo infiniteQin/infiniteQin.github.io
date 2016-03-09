@@ -179,6 +179,15 @@
 
     
     
+      
+      
+        
+        
+        
+      
+
+      
+    
 
     
       
@@ -202,8 +211,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/02/19/此证书的签发者无效/" itemprop="url">
-                  此证书的签发者无效
+                <a class="post-title-link" href="/2016/03/09/AFNetworking设置SSL链接/" itemprop="url">
+                  AFNetworking设置SSL链接
                 </a>
               
             
@@ -216,8 +225,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-19T18:09:57+08:00" content="2016-02-19">
-              2016-02-19
+            <time itemprop="dateCreated" datetime="2016-03-09T13:33:35+08:00" content="2016-03-09">
+              2016-03-09
             </time>
           </span>
 
@@ -227,8 +236,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/19/此证书的签发者无效/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/19/此证书的签发者无效/" itemprop="commentsCount"></span>
+                <a href="/2016/03/09/AFNetworking设置SSL链接/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/09/AFNetworking设置SSL链接/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -250,204 +259,15 @@
 
       
         
-          <h1 id="u95EE_u9898_uFF1A"><a href="#u95EE_u9898_uFF1A" class="headerlink" title="问题："></a>问题：</h1><h3 id="u5982_u4E0B_u56FE_u6240_u793A"><a href="#u5982_u4E0B_u56FE_u6240_u793A" class="headerlink" title="如下图所示"></a>如下图所示</h3><img src="/2016/02/19/此证书的签发者无效/expired_cer.png" alt="证书的签发者无效" title="证书的签发者无效">
+          <h1 id="u5F15_u8A00"><a href="#u5F15_u8A00" class="headerlink" title="引言"></a>引言</h1><p>  之前公司为网站端配置了SSL证书，上午刚好有空就做了下iOS端的支持，随便记录一下。</p>
+<h1 id="u51C6_u5907"><a href="#u51C6_u5907" class="headerlink" title="准备"></a>准备</h1><h3 id="u83B7_u53D6Certification_file"><a href="#u83B7_u53D6Certification_file" class="headerlink" title="获取Certification file"></a>获取Certification file</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl s_client -connect www.google.com:443 &#60;/dev/null 2&#62;/dev/null | openssl x509 -outform DER &#62; https.cer</span><br></pre></td></tr></table></figure>
+<p>  www.google.com:443换成你自己的地址。当然网管有的话直接向他索取就好了。如果格式是.crt可以通过下面的代码转成.cer<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -in https.crt -out https.cer -outform der</span><br></pre></td></tr></table></figure></p>
+<p>  这里顺便提供一些其他格式转化的例子。具体可以看<a href="https://www.openssl.org/docs/manmaster/apps/pkcs12.html">这里</a><br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/19/此证书的签发者无效/#more" rel="contents">
+            <a class="btn" href="/2016/03/09/AFNetworking设置SSL链接/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/03/让自己的库支持CocoaPods配置/" itemprop="url">
-                  让自己的库支持CocoaPods配置
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-03T17:22:17+08:00" content="2016-02-03">
-              2016-02-03
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/03/让自己的库支持CocoaPods配置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/03/让自己的库支持CocoaPods配置/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="u5F00_u7BC7"><a href="#u5F00_u7BC7" class="headerlink" title="开篇"></a>开篇</h1><p>公司项目一直在用CocoaPods管理第三方包，所以就写了个开源图片选择库（仿微信），随带学学CocoaPods私有库的配置以及如何让自己的开源库支持了pod install。<br><img src="https://raw.githubusercontent.com/infiniteQin/assets/master/QGGImagePicker/img.gif" alt="image"></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/03/让自己的库支持CocoaPods配置/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/03/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-03T16:04:20+08:00" content="2016-02-03">
-              2016-02-03
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/03/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/03/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
         
       
     </div>
@@ -508,7 +328,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -518,7 +338,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

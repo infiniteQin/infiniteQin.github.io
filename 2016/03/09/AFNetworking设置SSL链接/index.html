@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS,证书," />
+  <meta name="keywords" content="AFNetworking,HTTPS,SSL," />
 
 
 
@@ -57,17 +57,22 @@
 
 
 
-<meta name="description" content="问题：如下图所示">
+<meta name="description" content="引言  之前公司为网站端配置了SSL证书，上午刚好有空就做了下iOS端的支持，随便记录一下。
+准备获取Certification file  1openssl s_client -connect www.google.com:443 &amp;#60;/dev/null 2&amp;#62;/dev/null | openssl x509 -outform DER &amp;#62; https.cer
+  www.go">
 <meta property="og:type" content="article">
-<meta property="og:title" content="此证书的签发者无效">
-<meta property="og:url" content="https://infiniteqin.github.io/2016/02/19/此证书的签发者无效/index.html">
+<meta property="og:title" content="AFNetworking设置SSL链接">
+<meta property="og:url" content="https://infiniteqin.github.io/2016/03/09/AFNetworking设置SSL链接/index.html">
 <meta property="og:site_name" content="QGG's Blog">
-<meta property="og:description" content="问题：如下图所示">
-<meta property="og:image" content="https://infiniteqin.github.io/2016/02/19/此证书的签发者无效/expired_cer.png">
-<meta property="og:updated_time" content="2016-02-19T10:42:01.000Z">
+<meta property="og:description" content="引言  之前公司为网站端配置了SSL证书，上午刚好有空就做了下iOS端的支持，随便记录一下。
+准备获取Certification file  1openssl s_client -connect www.google.com:443 &amp;#60;/dev/null 2&amp;#62;/dev/null | openssl x509 -outform DER &amp;#62; https.cer
+  www.go">
+<meta property="og:updated_time" content="2016-03-09T08:12:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="此证书的签发者无效">
-<meta name="twitter:description" content="问题：如下图所示">
+<meta name="twitter:title" content="AFNetworking设置SSL链接">
+<meta name="twitter:description" content="引言  之前公司为网站端配置了SSL证书，上午刚好有空就做了下iOS端的支持，随便记录一下。
+准备获取Certification file  1openssl s_client -connect www.google.com:443 &amp;#60;/dev/null 2&amp;#62;/dev/null | openssl x509 -outform DER &amp;#62; https.cer
+  www.go">
 
 
 
@@ -85,7 +90,7 @@
   };
 </script>
 
-  <title> 此证书的签发者无效 | QGG's Blog </title>
+  <title> AFNetworking设置SSL链接 | QGG's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -195,7 +200,7 @@
             
             
               
-                此证书的签发者无效
+                AFNetworking设置SSL链接
               
             
           </h1>
@@ -207,8 +212,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-19T18:09:57+08:00" content="2016-02-19">
-              2016-02-19
+            <time itemprop="dateCreated" datetime="2016-03-09T13:33:35+08:00" content="2016-03-09">
+              2016-03-09
             </time>
           </span>
 
@@ -218,8 +223,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/19/此证书的签发者无效/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/19/此证书的签发者无效/" itemprop="commentsCount"></span>
+                <a href="/2016/03/09/AFNetworking设置SSL链接/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/09/AFNetworking设置SSL链接/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -240,14 +245,21 @@
       
 
       
-        <h1 id="u95EE_u9898_uFF1A"><a href="#u95EE_u9898_uFF1A" class="headerlink" title="问题："></a>问题：</h1><h3 id="u5982_u4E0B_u56FE_u6240_u793A"><a href="#u5982_u4E0B_u56FE_u6240_u793A" class="headerlink" title="如下图所示"></a>如下图所示</h3><img src="/2016/02/19/此证书的签发者无效/expired_cer.png" alt="证书的签发者无效" title="证书的签发者无效">
-<a id="more"></a>
-<h1 id="u539F_u56E0"><a href="#u539F_u56E0" class="headerlink" title="原因"></a>原因</h1><h3 id="mac_u7CFB_u7EDF_u8BA4_u8BC1AppleWWDRCA-cer_u8BC1_u4E66_u8FC7_u671F"><a href="#mac_u7CFB_u7EDF_u8BA4_u8BC1AppleWWDRCA-cer_u8BC1_u4E66_u8FC7_u671F" class="headerlink" title="mac系统认证AppleWWDRCA.cer证书过期"></a>mac系统认证AppleWWDRCA.cer证书过期</h3><h1 id="u89E3_u51B3_u65B9_u6CD5"><a href="#u89E3_u51B3_u65B9_u6CD5" class="headerlink" title="解决方法"></a>解决方法</h1><ol>
-<li>打开keychain;</li>
-<li>显示已过期证实;</li>
-<li>删除过期AppleWWDRCA证书（Worldwide Developer Relations Certification Intermediate Certificate）;</li>
-<li>下载<a href="https://developer.apple.com/certificationauthority/AppleWWDRCA.cer" target="_blank" rel="external">AppleWWDRCA.cer</a>证书替换；</li>
-</ol>
+        <h1 id="u5F15_u8A00"><a href="#u5F15_u8A00" class="headerlink" title="引言"></a>引言</h1><p>  之前公司为网站端配置了SSL证书，上午刚好有空就做了下iOS端的支持，随便记录一下。</p>
+<h1 id="u51C6_u5907"><a href="#u51C6_u5907" class="headerlink" title="准备"></a>准备</h1><h3 id="u83B7_u53D6Certification_file"><a href="#u83B7_u53D6Certification_file" class="headerlink" title="获取Certification file"></a>获取Certification file</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl s_client -connect www.google.com:443 &#60;/dev/null 2&#62;/dev/null | openssl x509 -outform DER &#62; https.cer</span><br></pre></td></tr></table></figure>
+<p>  www.google.com:443换成你自己的地址。当然网管有的话直接向他索取就好了。如果格式是.crt可以通过下面的代码转成.cer<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -in https.crt -out https.cer -outform der</span><br></pre></td></tr></table></figure></p>
+<p>  这里顺便提供一些其他格式转化的例子。具体可以看<a href="https://www.openssl.org/docs/manmaster/apps/pkcs12.html" target="_blank" rel="external">这里</a><br><a id="more"></a><br>  Parse a PKCS#12 file and output it to a file:<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -in file.p12 -out file.pem</span><br></pre></td></tr></table></figure></p>
+<p>  Output only client certificates to a file:<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -in file.p12 -clcerts -out file.pem</span><br></pre></td></tr></table></figure></p>
+<p>  Don’t encrypt the private key:<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -in file.p12 -out file.pem -nodes</span><br></pre></td></tr></table></figure></p>
+<p>  Print some info about a PKCS#12 file:<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -in file.p12 -info -noout</span><br></pre></td></tr></table></figure></p>
+<p>  Create a PKCS#12 file:<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -export -in file.pem -out file.p12 -name &#34;My Certificate&#34;</span><br></pre></td></tr></table></figure></p>
+<p>  Include some extra certificates:<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -export -in file.pem -out file.p12 -name &#34;My Certificate&#34; \&#10; -certfile othercerts.pem</span><br></pre></td></tr></table></figure></p>
+<h1 id="AFNetworking_uFF083-0_uFF09_u914D_u7F6E"><a href="#AFNetworking_uFF083-0_uFF09_u914D_u7F6E" class="headerlink" title="AFNetworking（3.0）配置"></a>AFNetworking（3.0）配置</h1><p>  首先将cer证书导入工程。</p>
+<p>  设置securityPolicy<br>  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *cerPath = [[NSBundle mainBundle] pathForResource:@&#34;https&#34; ofType:@&#34;cer&#34;];&#10;NSData *certData  = [NSData dataWithContentsOfFile:cerPath];&#10;AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];&#10;#if DEBUG//&#20026;&#20102;&#26041;&#20415;&#24320;&#21457;&#26102;&#25235;&#21253;&#10;   securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];&#10;#endif&#10;[securityPolicy setAllowInvalidCertificates:NO];&#10;[securityPolicy setPinnedCertificates:[NSSet setWithObject:certData]];&#10;[securityPolicy setValidatesDomainName:YES];&#10;sessionManager.securityPolicy = securityPolicy;</span><br></pre></td></tr></table></figure></p>
+<h3 id="u8BF4_u660E"><a href="#u8BF4_u660E" class="headerlink" title="说明"></a>说明</h3><p>  SSLPinningMode<br>  The criteria by which server trust should be evaluated against the pinned SSL certificates. Defaults to <code>AFSSLPinningModeNone</code>.</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">  /*&#10; `AFSSLPinningModeNone` &#19981;&#39564;&#35777;&#35777;&#20070;&#20449;&#24687;.&#10;&#10; `AFSSLPinningModePublicKey` &#21482;&#39564;&#35777;&#35777;&#20070;&#21253;&#21547;&#30340;&#20844;&#38053;&#20449;&#24687;.&#10;&#10; `AFSSLPinningModeCertificate` &#39564;&#35777;&#35777;&#20070;&#20449;&#24687;&#21253;&#25324;&#26377;&#25928;&#26399;&#12289;&#20844;&#38053;&#31561;.&#10;*/&#10;typedef NS_ENUM(NSUInteger, AFSSLPinningMode) &#123;&#10;    AFSSLPinningModeNone,&#10;    AFSSLPinningModePublicKey,&#10;    AFSSLPinningModeCertificate,&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>选择哪种模式？<br>AFSSLPinningModeCertificate优点是安全，但是是证书是有有效期的，如果打包的证书过期了或者服务器证书替换了就会链接失败；当然你也可以下载新证书进行更新，但这时候下载的地址也就不具安全性了。<br>AFSSLPinningModePublicKey 没前面的安全，但是这种模式只会验证public key这样就不用考虑证书过期的问题了。<br>所以综合比较确保不能及时更新所有过期app的情况下还是建议用AFSSLPinningModePublicKey。<br>AFSSLPinningModeNone的话用于开发抓包调试最好了。<br>具体的差别建议看下源码</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;switch (self.SSLPinningMode) &#123;&#10;        case AFSSLPinningModeNone:&#10;        default:&#10;            return NO;&#10;        case AFSSLPinningModeCertificate: &#123;&#10;            NSMutableArray *pinnedCertificates = [NSMutableArray array];&#10;            for (NSData *certificateData in self.pinnedCertificates) &#123;&#10;                [pinnedCertificates addObject:(__bridge_transfer id)SecCertificateCreateWithData(NULL, (__bridge CFDataRef)certificateData)];&#10;            &#125;&#10;            SecTrustSetAnchorCertificates(serverTrust, (__bridge CFArrayRef)pinnedCertificates);&#10;&#10;            if (!AFServerTrustIsValid(serverTrust)) &#123;&#10;                return NO;&#10;            &#125;&#10;&#10;            // obtain the chain after being validated, which *should* contain the pinned certificate in the last position (if it&#39;s the Root CA)&#10;            NSArray *serverCertificates = AFCertificateTrustChainForServerTrust(serverTrust);&#10;&#10;            for (NSData *trustChainCertificate in [serverCertificates reverseObjectEnumerator]) &#123;&#10;                if ([self.pinnedCertificates containsObject:trustChainCertificate]) &#123;&#10;                    return YES;&#10;                &#125;&#10;            &#125;&#10;&#10;            return NO;&#10;        &#125;&#10;        case AFSSLPinningModePublicKey: &#123;&#10;            NSUInteger trustedPublicKeyCount = 0;&#10;            NSArray *publicKeys = AFPublicKeyTrustChainForServerTrust(serverTrust);&#10;&#10;            for (id trustChainPublicKey in publicKeys) &#123;&#10;                for (id pinnedPublicKey in self.pinnedPublicKeys) &#123;&#10;                    if (AFSecKeyIsEqualToKey((__bridge SecKeyRef)trustChainPublicKey, (__bridge SecKeyRef)pinnedPublicKey)) &#123;&#10;                        trustedPublicKeyCount += 1;&#10;                    &#125;&#10;                &#125;&#10;            &#125;&#10;            return trustedPublicKeyCount &#62; 0;&#10;        &#125;&#10;    &#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -256,9 +268,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/iOS/" rel="tag">#iOS</a>
+            <a href="/tags/AFNetworking/" rel="tag">#AFNetworking</a>
           
-            <a href="/tags/证书/" rel="tag">#证书</a>
+            <a href="/tags/HTTPS/" rel="tag">#HTTPS</a>
+          
+            <a href="/tags/SSL/" rel="tag">#SSL</a>
           
         </div>
       
@@ -267,17 +281,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/03/让自己的库支持CocoaPods配置/" rel="next" title="让自己的库支持CocoaPods配置">
-                <i class="fa fa-chevron-left"></i> 让自己的库支持CocoaPods配置
+              <a href="/2016/02/19/此证书的签发者无效/" rel="next" title="此证书的签发者无效">
+                <i class="fa fa-chevron-left"></i> 此证书的签发者无效
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/09/AFNetworking设置SSL链接/" rel="prev" title="AFNetworking设置SSL链接">
-                AFNetworking设置SSL链接 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -303,8 +313,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/19/此证书的签发者无效/"
-           data-title="此证书的签发者无效" data-url="https://infiniteqin.github.io/2016/02/19/此证书的签发者无效/">
+      <div class="ds-thread" data-thread-key="2016/03/09/AFNetworking设置SSL链接/"
+           data-title="AFNetworking设置SSL链接" data-url="https://infiniteqin.github.io/2016/03/09/AFNetworking设置SSL链接/">
       </div>
     
   </div>
@@ -392,7 +402,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u95EE_u9898_uFF1A"><span class="nav-number">1.</span> <span class="nav-text">问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5982_u4E0B_u56FE_u6240_u793A"><span class="nav-number">1.0.1.</span> <span class="nav-text">如下图所示</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u539F_u56E0"><span class="nav-number">2.</span> <span class="nav-text">原因</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mac_u7CFB_u7EDF_u8BA4_u8BC1AppleWWDRCA-cer_u8BC1_u4E66_u8FC7_u671F"><span class="nav-number">2.0.1.</span> <span class="nav-text">mac系统认证AppleWWDRCA.cer证书过期</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u89E3_u51B3_u65B9_u6CD5"><span class="nav-number">3.</span> <span class="nav-text">解决方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u5F15_u8A00"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u51C6_u5907"><span class="nav-number">2.</span> <span class="nav-text">准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u83B7_u53D6Certification_file"><span class="nav-number">2.0.1.</span> <span class="nav-text">获取Certification file</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AFNetworking_uFF083-0_uFF09_u914D_u7F6E"><span class="nav-number">3.</span> <span class="nav-text">AFNetworking（3.0）配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u8BF4_u660E"><span class="nav-number">3.0.1.</span> <span class="nav-text">说明</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
